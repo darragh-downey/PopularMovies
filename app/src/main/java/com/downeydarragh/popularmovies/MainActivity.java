@@ -1,7 +1,10 @@
 package com.downeydarragh.popularmovies;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,12 +13,22 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
+    private PendingIntent pendingIntent;
+    private AlarmManager alarmManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent downloadIntent = new Intent(this, DownloadService.class);
+        pendingIntent = PendingIntent.getBroadcast(this, 0, downloadIntent, 0);
+
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME, System.currentTimeMillis(), pendingIntent);
+
+
+
 
         GridView gridView = (GridView) findViewById(R.id.gridview);
         gridView.setAdapter(new ImageAdapter(this));
@@ -47,5 +60,15 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 }
