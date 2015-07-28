@@ -1,8 +1,11 @@
 package com.downeydarragh.popularmovies;
 
+<<<<<<< Updated upstream
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+=======
+>>>>>>> Stashed changes
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -14,8 +17,11 @@ import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
+<<<<<<< Updated upstream
     private PendingIntent pendingIntent;
     private AlarmManager alarmManager;
+=======
+>>>>>>> Stashed changes
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
